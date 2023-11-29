@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
   const classes = useStyles();
   const location = useLocation();
+  const navigateToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <AppBar style={{ 
@@ -58,23 +61,24 @@ const Navbar = () => {
           height: '35px'
          }}></img>
         <div className={classes.navlinks}>
-          <Link to="/" className={`${classes.link} ${location.pathname === '/' ? classes.activeLink : ''}`}>
+          <Link to="/" onClick={navigateToTop}
+          className={`${classes.link} ${location.pathname === '/' ? classes.activeLink : ''}`}>
             Home
           </Link>
           <Link
-            to="/construction"
+            to="/construction" onClick={navigateToTop}
             className={`${classes.link} ${location.pathname === '/construction' ? classes.activeLink : ''}`}
           >
             Construction
           </Link>
           <Link
-            to="/about"
+            to="/about" onClick={navigateToTop}
             className={`${classes.link} ${location.pathname === '/about' ? classes.activeLink : ''}`}
           >
             About Us
           </Link>
           <Link
-            to="/contact"
+            to="/contact" onClick={navigateToTop}
             className={`${classes.link} ${location.pathname === '/contact' ? classes.activeLink : ''}`}
           >
             Contact Us

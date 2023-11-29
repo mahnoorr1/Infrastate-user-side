@@ -1,26 +1,33 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from "../pages/LandingPage/landingPage";
 import About from "../pages/AboutUs/about";
-import ContactUs from "../pages/ContactUs/contactUs";
 import Construction from "../pages/Construction/construction";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Contents/Footer/footer";
+import LandingPageRouter from "./LandingPageRouter";
+import ContactPageRouter from "./ContactRouter";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <div style={{
-        width: '99vw'
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
       }}>
         <Navbar/>
         <Routes>
-          <Route exact path="/" element={<LandingPage/>} />
+          <Route exact path="/*" element={<LandingPageRouter/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="/contact" element={<ContactUs/>} />
+          <Route path="/contact/*" element={<ContactPageRouter/>} />
           <Route path="/construction" element={<Construction/>} />
         </Routes>
-        <Footer/>
+        <div style={{
+          marginTop: 'auto', 
+        }}>
+          <Footer/>
+        </div>
+        
       </div>
     </BrowserRouter>
   );

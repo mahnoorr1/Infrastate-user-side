@@ -1,16 +1,27 @@
 import theme from '../../configs/theme';
+import React, { useState, useEffect } from 'react';
 import { Typography, Card, Grid } from '@mui/material';
 import landingPage_cover from '../../assets/landingPage_cover.jpg';
 import zone3_4 from '../../assets/zone3_4.jpg';
+import zone3_5 from '../../assets/zone3_5.jpg';
 import AppButton from '../../components/Buttons/defaultButton';
-import TrackedResultCard from '../../components/trackedResultsCard';
+import TrackedResultCard from '../Tracking/components/trackedResultsCard';
 import HoverZoom from '../../components/onhoverZoom';
+import zone35OutputData from '../../assets/zone3_5_output.json';
 
 const LandingPage = () => {
+    const [loadedData, setLoadedData] = useState(null);
+
+    useEffect(() => {
+        const newData = {
+        ...zone35OutputData, 
+        };
+        setLoadedData(newData);
+    }, []);
     return(
         <div style={{
             height: '100%',
-            width: '99.05vw',
+            width: '99vw',
         }}>
             <Card
             style={{
@@ -35,7 +46,7 @@ const LandingPage = () => {
             style={{
                 position: 'absolute',
                 top: '320px',
-                height: '150px',
+                height: '200px',
                 width: '100%',
                 background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.5) 100%)',
             }}
@@ -205,11 +216,14 @@ const LandingPage = () => {
                     under certain zone and area, a request can be sent to admin to indicate willingness of construction
                     at that location.
                 </Typography>
-                <HoverZoom>
-                    <AppButton text={'View Details'}
-                    onClick={()=>{}}></AppButton>
-                </HoverZoom>
-                    
+                <div style={{
+                    display: 'flex'
+                }}>
+                    <HoverZoom>
+                        <AppButton text={'View Details'}
+                        onClick={()=>{}}></AppButton>
+                    </HoverZoom>
+                </div>
             </Card>
             <div 
             style={{ 
@@ -259,7 +273,7 @@ const LandingPage = () => {
             variant='h3'
             fontWeight={600}
             textAlign={'center'}
-            > Previosuly Tracked Activities</Typography>
+            > Featured Tracked Activities</Typography>
             <Grid sx={{
                 justifyContent: 'center',
                 marginTop: '30px',
@@ -272,7 +286,7 @@ const LandingPage = () => {
                     <TrackedResultCard 
                     image={zone3_4}
                     title={'Zone 3 sector'}
-                    change={'3%'}></TrackedResultCard>
+                    data = {loadedData}></TrackedResultCard>
                 </Grid>
                 <Grid item md = {5} lg ={3.6}
                 sx={{
@@ -282,7 +296,7 @@ const LandingPage = () => {
                     <TrackedResultCard 
                     image={zone3_4}
                     title={'Zone 3 sector'}
-                    change={'3%'}></TrackedResultCard>
+                    data = {loadedData}></TrackedResultCard>
                 </Grid>
                 <Grid item md = {5} lg ={3.6}
                 sx={{
@@ -290,12 +304,24 @@ const LandingPage = () => {
                     justifyContent: 'center',
                 }}>
                     <TrackedResultCard 
-                    image={zone3_4}
-                    title={'Zone 3 sector'}
-                    change={'3%'}></TrackedResultCard>
+                    image={zone3_5}
+                    title={'Zone 3 section 5'}
+                    data = {loadedData}></TrackedResultCard>
                 </Grid>
             </Grid>
         </Card>
+        {/* <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '30px',
+        }}>
+            <HoverZoom>
+                <AppButton 
+                text={'View All'}
+                onClick={()=>{}}
+                ></AppButton>
+            </HoverZoom>
+        </div> */}
         
     </div>
     );

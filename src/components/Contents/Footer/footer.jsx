@@ -15,6 +15,7 @@ const Footer = () => {
       sx={{
         backgroundColor: theme.palette.shades.greenDark,
         p: 6,
+        width: '99.02vw',
       }}
     >
       <Container maxWidth="lg">
