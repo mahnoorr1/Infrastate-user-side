@@ -1,9 +1,11 @@
 import theme from '../../configs/theme';
 import React, { useState, useEffect } from 'react';
-import { Typography, Card, Grid } from '@mui/material';
+import { Typography, Card, Grid, Container } from '@mui/material';
 import landingPage_cover from '../../assets/landingPage_cover.jpg';
 import zone3_4 from '../../assets/zone3_4.jpg';
 import zone3_5 from '../../assets/zone3_5.jpg';
+import { PiBuildingsLight } from "react-icons/pi";
+import { MdOutlineLocationSearching, MdOutlineRule } from "react-icons/md";
 import AppButton from '../../components/Buttons/defaultButton';
 import TrackedResultCard from '../Tracking/components/trackedResultsCard';
 import HoverZoom from '../../components/onhoverZoom';
@@ -40,6 +42,7 @@ const LandingPage = () => {
                 width: '100%',
                 height: '450px',
                 objectFit: 'cover',
+                marginBottom: '20px',
             }}
             />
             <div
@@ -114,6 +117,62 @@ const LandingPage = () => {
             <div>Capital Development Authority</div>
             </Typography>
         </div>
+        {/* horizontal bar */}
+        <Grid container sx={{
+            height: '120px',
+            width: '50%',
+            backgroundColor: theme.palette.shades.greenMedium,
+            display: 'flex',
+            alignItems: 'center',
+            textAlign: 'center',
+            position: 'absolute',
+            top: '65%',
+        }}>
+            <Grid item md={4}>
+                <Typography 
+                variant='h5'
+                fontWeight={600}
+                color={'white'}>
+                    Construction
+                </Typography>
+                <PiBuildingsLight
+                style={{
+                    marginTop: '10px',
+                }}
+                fontSize={'35px'} 
+                color='white'/>
+            </Grid>
+
+            <Grid item md={4}>
+                <Typography 
+                variant='h5'
+                fontWeight={600}
+                color={'white'}>
+                    Rules
+                </Typography>
+                <MdOutlineRule
+                style={{
+                    marginTop: '10px',
+                }}
+                fontSize={'30px'} 
+                color='white'/>
+            </Grid>
+
+            <Grid item md={4}>
+                <Typography 
+                variant='h5'
+                fontWeight={600}
+                color={'white'}>
+                    Tracking
+                </Typography>
+                <MdOutlineLocationSearching 
+                style={{
+                    marginTop: '10px',
+                }}
+                fontSize={'30px'} 
+                color='white'/>
+            </Grid>
+        </Grid>
         {/* <ScrollToTopButton/> */}
         {/* other data section */}
         <Card style={{
@@ -310,6 +369,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </Card>
+        
         {/* <div style={{
             display: 'flex',
             justifyContent: 'center',
