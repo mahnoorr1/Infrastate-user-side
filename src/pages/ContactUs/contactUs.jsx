@@ -1,3 +1,4 @@
+import theme from '../../configs/theme';
 import { Card, TextField, Typography } from "@mui/material";
 import InputField from "../../components/inputField";
 import { useState } from "react";
@@ -41,14 +42,22 @@ const ContactUs = () => {
             }}>
                 <div>
                     <Typography variant="body1"
-                    fontWeight={600}>Head office:</Typography>
+                    fontWeight={600}
+                    marginTop={'10px'}
+                    color={theme.palette.shades.greenMedium}>Head office:</Typography>
                     <Typography>Khayaban-e-Suharwardi, Sector G-7/4, Islamabad</Typography>
                     <Typography>Secretary CDA Board, CDA</Typography>
+
                     <Typography variant="body1"
-                    fontWeight={600}>Telephone:</Typography>
+                    fontWeight={600}
+                    marginTop={'10px'}
+                    color={theme.palette.shades.greenMedium}>Telephone:</Typography>
                     <Typography>+92-51-9252972</Typography>
+
                     <Typography variant="body1"
-                    fontWeight={600}>On Map:</Typography>
+                    fontWeight={600}
+                    marginTop={'10px'}
+                    color={theme.palette.shades.greenMedium}>On Map:</Typography>
                     <AerialMap 
                     width={'40vw'} 
                     height={'40vh'} 
