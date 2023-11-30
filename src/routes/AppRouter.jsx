@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Contents/Footer/footer";
 import LandingPageRouter from "./LandingPageRouter";
 import ContactPageRouter from "./ContactRouter";
+import RulesScreen from "../pages/ConstructionRules/rules";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
         <Routes>
           <Route exact path="/*" element={<LandingPageRouter/>} />
           <Route path="/about" element={<About/>} />
+          <Route path="/rules" element={<RulesScreen/>}/>
           <Route path="/contact/*" element={<ContactPageRouter/>} />
           <Route path="/construction" element={<Construction/>} />
         </Routes>

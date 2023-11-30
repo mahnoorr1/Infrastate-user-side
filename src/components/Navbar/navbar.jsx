@@ -71,6 +71,10 @@ const Navbar = () => {
           >
             Construction
           </Link>
+          <Link to="/rules" onClick={navigateToTop}
+          className={`${classes.link} ${location.pathname === '/rules' ? classes.activeLink : ''}`}>
+            Rules
+          </Link>
           <Link
             to="/about" onClick={navigateToTop}
             className={`${classes.link} ${location.pathname === '/about' ? classes.activeLink : ''}`}
