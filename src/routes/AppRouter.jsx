@@ -7,6 +7,7 @@ import Footer from "../components/Contents/Footer/footer";
 import LandingPageRouter from "./LandingPageRouter";
 import ContactPageRouter from "./ContactRouter";
 import RulesScreen from "../pages/ConstructionRules/rules";
+import ImageListComponent from "../pages/tempImages";
 
 const AppRouter = () => {
   return (
@@ -22,7 +23,8 @@ const AppRouter = () => {
           <Route path="/about" element={<About/>} />
           <Route path="/rules" element={<RulesScreen/>}/>
           <Route path="/contact/*" element={<ContactPageRouter/>} />
-          <Route path="/construction" element={<Construction/>} />
+          {/* temporary set to image list component */}
+          <Route path="/construction" element={<ImageListComponent/>} />  
         </Routes>
         <div style={{
           marginTop: 'auto', 

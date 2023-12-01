@@ -4,6 +4,7 @@ import meet from '../../assets/meet.jpg';
 import { MdOutlineRule } from 'react-icons/md';
 import { Grid, Typography, Card } from "@mui/material";
 import RulesTable from './components/rulesTable';
+import ResourceCard from './components/resourceCard';
 const RulesScreen = () => {
     return(
         <div>
@@ -70,16 +71,38 @@ const RulesScreen = () => {
                     </Card>
                 </Grid>
             </Grid>
-            
-            <Grid container>
-                <Grid item sm={12} md = {9}>
-                    <RulesTable/>
+            <RulesTable/>
+            <Typography
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+            }}
+            margin={3}
+            variant='h3' 
+            color={theme.palette.shades.greenDark}
+            fontWeight={600} >Other Resources</Typography>
+            <Grid container sx={{
+                margin: '20px',
+                display:'flex',
+                justifyContent: 'center',
+            }}>
+                <Grid item md = {3}>
+                    <ResourceCard text={'All bylaws'} 
+                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
                 </Grid>
-                <Grid item sm = {12} md = {3}>
-                    {/* links list to cda pages */}
+                <Grid item md = {3}>
+                    <ResourceCard text={'All bylaws'} 
+                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
+                </Grid>
+                <Grid item md = {3}>
+                    <ResourceCard text={'All bylaws'} 
+                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
+                </Grid>
+                <Grid item md = {3}>
+                    <ResourceCard text={'All bylaws'} 
+                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
                 </Grid>
             </Grid>
-            
         </div>
     )
 }
