@@ -2,10 +2,30 @@ import { SlDoc } from 'react-icons/sl';
 import theme from '../../configs/theme';
 import meet from '../../assets/meet.jpg';
 import { MdOutlineRule } from 'react-icons/md';
+import React, { useState, useEffect } from 'react';
 import { Grid, Typography, Card } from "@mui/material";
 import RulesTable from './components/rulesTable';
 import ResourceCard from './components/resourceCard';
 const RulesScreen = () => {
+    const [fontSize, setFontSize] = useState(50); 
+
+    useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 600) {
+        setFontSize(25);
+      } else if (screenWidth <= 1200) {
+        setFontSize(35);
+      } else {
+        setFontSize(50);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+    }, []);
     return(
         <div>
             {/* <Typography variant="h4"
@@ -18,7 +38,7 @@ const RulesScreen = () => {
                 sx={{
                     backgroundColor: theme.palette.shades.greenMedium,
                 }}>
-                    <Typography variant="h2"
+                    <Typography fontSize={fontSize}
                     fontWeight={600}
                     color={'white'}>
                         Construction Rules
@@ -86,21 +106,21 @@ const RulesScreen = () => {
                 display:'flex',
                 justifyContent: 'center',
             }}>
-                <Grid item md = {3}>
+                <Grid item sm={6} md = {4} lg={3}>
                     <ResourceCard text={'All bylaws'} 
                     link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
                 </Grid>
-                <Grid item md = {3}>
-                    <ResourceCard text={'All bylaws'} 
-                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
+                <Grid item sm={6} md = {4} lg={3}>
+                    <ResourceCard text={'Building Control Regulations-2020'} 
+                    link={'https://www.cda.gov.pk/documents/docs/buildingRegulations2023.pdf'}/>
                 </Grid>
-                <Grid item md = {3}>
-                    <ResourceCard text={'All bylaws'} 
-                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
+                <Grid item sm={6} md = {4} lg={3}>
+                    <ResourceCard text={'Development of Private Housing'} 
+                    link={'https://www.cda.gov.pk/documents/docs/PrivateHousingRegulations-Zone-2-4-5.pdf'}/>
                 </Grid>
-                <Grid item md = {3}>
-                    <ResourceCard text={'All bylaws'} 
-                    link={'https://www.cda.gov.pk/resource_center/bylaws.asp'}/>
+                <Grid item sm={6} md = {4} lg={3}>
+                    <ResourceCard text={'Planning parameters for construction'} 
+                    link={'https://www.cda.gov.pk/documents/docs/Appartment-Parameters-CDA.pdf'}/>
                 </Grid>
             </Grid>
         </div>

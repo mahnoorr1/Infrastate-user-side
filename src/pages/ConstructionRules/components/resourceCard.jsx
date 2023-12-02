@@ -5,16 +5,22 @@ import { Link } from "react-router-dom";
 
 const ResourceCard = ({text, link}) => {
     return(
-        <Link to={'https://www.cda.gov.pk/resource_center/bylaws.asp'}>
+        <Link to={link}>
             <Card 
             sx={{
                 height: '80px',
-                width: '280px',
+                width: {
+                    sm: '320px',
+                    md: '290px',
+                    lg: '300px',
+                },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
                 gap: '10px',
                 borderRadius: '10px',
+                marginBottom: '10px',
+                padding: '10px',
             }}
             >
                 <FaRegFilePdf fontSize={'30px'}
