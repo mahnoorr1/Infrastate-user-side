@@ -45,6 +45,7 @@ export const getOuputImages = async (folderPath) => {
             .filter((item) => item.name.endsWith('.jpg'))
             .map(async (item) => {
               const imageUrl = await getDownloadURL(item);
+              console.log(imageUrl);
               return { imageUrl, fileName: item.name };
             })
         );
