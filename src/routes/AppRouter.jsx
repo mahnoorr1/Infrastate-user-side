@@ -9,6 +9,8 @@ import ContactPageRouter from "./ContactRouter";
 import RulesScreen from "../pages/ConstructionRules/rules";
 import ImageListComponent from "../pages/tempImages";
 import TiffDownloadComponent from "../pages/tempImages";
+import SubscriptionPlanScreen from "../pages/Payment/subscribePlan";
+import ProfileScreen from "../pages/Profiling/profileDetails";
 
 const AppRouter = () => {
   return (
@@ -26,6 +28,8 @@ const AppRouter = () => {
           <Route path="/contact/*" element={<ContactPageRouter/>} />
           {/* temporary set to image list component */}
           <Route path="/construction" element={<TiffDownloadComponent/>} />  
+          <Route path="/subscription" element={<SubscriptionPlanScreen/>}/>
+          <Route path="/profile" element={<ProfileScreen/>}/>
         </Routes>
         <div style={{
           marginTop: 'auto', 
