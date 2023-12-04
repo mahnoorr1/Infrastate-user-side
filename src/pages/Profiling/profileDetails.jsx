@@ -6,7 +6,6 @@ import discussion from '../../assets/discussion.jpg';
 import TextComponent from "./components/textComponent";
 import HoverZoom from "../../components/onhoverZoom";
 import AppButton from "../../components/Buttons/defaultButton";
-import ProfileAvatar from "./components/profileAvatar";
 import { IoIosPerson } from "react-icons/io";
 
 const ProfileScreen = () => {
