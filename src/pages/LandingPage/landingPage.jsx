@@ -1,5 +1,7 @@
 import theme from '../../configs/theme';
+import { RingLoader } from 'react-spinners';
 import React, { useState, useEffect } from 'react';
+import { getOutputFiles } from '../../Firebase/firebaseStorage';
 import { Typography, Card, Grid, Container } from '@mui/material';
 import landingPage_cover from '../../assets/landingPage_cover.jpg';
 import zone3_4 from '../../assets/zone3_4.jpg';
@@ -13,6 +15,25 @@ import zone35OutputData from '../../assets/zone3_5_output.json';
 
 const LandingPage = () => {
     const [loadedData, setLoadedData] = useState(null);
+    const [filesData, setFilesData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchFiles = async () => {
+        try {
+            const folderPath = 'output/';
+            const filesData = await getOutputFiles(folderPath);
+            setFilesData(filesData);
+            console.log(filesData);
+        } catch (error) {
+            console.error('Error fetching files:', error);
+        } finally {
+            setLoading(false);
+        }
+        };
+
+        fetchFiles();
+    }, []);
 
     useEffect(() => {
         const newData = {
@@ -321,6 +342,7 @@ const LandingPage = () => {
             </Card>
             </div>
         </Card>
+        
         <Card sx={{
             height: 'auto',
             width: '100%',
@@ -337,36 +359,40 @@ const LandingPage = () => {
                 justifyContent: 'center',
                 marginTop: '30px',
             }} container spacing={1}>
-                <Grid item md = {5} lg ={3.6}
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}>
-                    <TrackedResultCard 
-                    image={zone3_4}
-                    title={'Zone 3 sector'}
-                    data = {loadedData}></TrackedResultCard>
-                </Grid>
-                <Grid item md = {5} lg ={3.6}
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}>
-                    <TrackedResultCard 
-                    image={zone3_4}
-                    title={'Zone 3 sector'}
-                    data = {loadedData}></TrackedResultCard>
-                </Grid>
-                <Grid item md = {5} lg ={3.6}
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                }}>
-                    <TrackedResultCard 
-                    image={zone3_5}
-                    title={'Zone 3 section 5'}
-                    data = {loadedData}></TrackedResultCard>
-                </Grid>
+                {loading ? (
+                    <div
+                        style={{
+                        flexDirection: 'column',
+                        }}>
+                        <RingLoader color="#36D7B7" loading={loading} size={150} />
+                        <Typography textAlign={'center'}>Loading...</Typography>
+                    </div>
+                ) :(
+                    filesData.slice(0, 6).map((file, index) => {
+                        const isEvenIndex = index % 2 === 0;
+                      
+                        if (isEvenIndex && filesData[index + 1]) {
+                          return (
+                            <Grid item md = {5} lg ={3.6} key={index}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}>
+                                <TrackedResultCard 
+                                image={file.image}
+                                title={file.fileName}
+                                data = {filesData[index + 1].jsonContent && filesData[index + 1].jsonContent}></TrackedResultCard>
+                                
+                            </Grid>
+                          );
+                        }
+                      
+                        // Return null for odd indices or when there's no next item
+                        return null;
+                      })
+                      
+                )}
+                
             </Grid>
         </Card>
         
