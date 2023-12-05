@@ -84,18 +84,18 @@ const TiffDownloadComponent = () => {
   const handleDownload = async () => {
     try {
       setLoading(true);
-      const img1 = await downloadTiffFile(zone, fileName);
-      console.log(`Download URL for ${fileName}.tiff in ${zone}:`, img1);
-      setImgOld(img1);
-      const img2 = await downloadTiffFile(zone, `${fileName}_2023`);
-      console.log(`Download URL for ${fileName}_2023.tiff in ${zone}:`, img2);
-      setImgNew(img2);
+      // const img1 = await downloadTiffFile(zone, fileName);
+      // console.log(`Download URL for ${fileName}.tiff in ${zone}:`, img1);
+      // setImgOld(img1);
+      // const img2 = await downloadTiffFile(zone, `${fileName}_2023`);
+      // console.log(`Download URL for ${fileName}_2023.tiff in ${zone}:`, img2);
+      // setImgNew(img2);
       
       const formData = new FormData();
-      formData.append('img1', img1);
-      formData.append('img2', img2);
+      formData.append('img1', imgOld);
+      formData.append('img2', imgNew);
 
-      const response = await axios.post('http://0.0.0.0:8099/get_predictions' ,
+      const response = await axios.post('http://127.0.0.1:8099/get_predictions' ,
       formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -107,7 +107,7 @@ const TiffDownloadComponent = () => {
 
     } catch (error) {
       // Handle error
-      console.error('Error downloading .tiff file:', error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -122,15 +122,24 @@ const TiffDownloadComponent = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-        console.log(file);
+      setImgOld(file);
+    }
+}
+  const handleFileChange1 = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImgNew(file);
     }
 }
 
   return (
     <>
-        {/* <div>
+         <div>
             <input type="file" onChange={handleFileChange} />
-        </div> */}
+        </div> 
+        <div>
+            <input type="file" onChange={handleFileChange1} />
+        </div> 
     <div style={{
       margin: '100px'
     }}>
