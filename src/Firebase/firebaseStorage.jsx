@@ -172,3 +172,90 @@ const getJsonContent = async (item) => {
     throw error;
   }
 };
+
+
+export const fetchZoneFilesFromFolder = async (zone) => {
+  try {
+    const zoneFolderPath = `Zone${zone}/`;
+    const outputFolderPath = `output/`;
+
+    // Fetch TIF files from the specified Zone folder
+    const tifFilesRef = ref(storage, zoneFolderPath);
+    const tifListResult = await list(tifFilesRef);
+
+    const tifFiles = await Promise.all(
+      tifListResult.items
+        .filter((item) => item.name.endsWith('.tif') && !item.name.includes('2023'))
+        .map(async (item) => {
+          const tifUrl = await getDownloadURL(item);
+          return { tifUrl, fileName: item.name.replace('.tif', '') };
+        })
+    );
+
+    // Fetch TIF files from the specified Zone folder that contain '2023' in their names
+    const tif2023Files = await Promise.all(
+      tifListResult.items
+        .filter((item) => item.name.endsWith('.tif') && item.name.includes('2023'))
+        .map(async (item) => {
+          const tif2023Url = await getDownloadURL(item);
+          const fileName = item.name.replace('.tif', '').replace('_2023', '');
+    
+          return { tif2023Url, fileName };
+        })
+    );
+    
+
+
+  // Fetch JPG and JSON files from the output folder
+  const outputFilesRef = ref(storage, outputFolderPath);
+  const outputListResult = await list(outputFilesRef);
+
+  const outputFiles = await Promise.all(
+    outputListResult.items
+      .filter((item) => {
+        const fileNameWithoutExtension = item.name.split('.')[0];
+        return fileNameWithoutExtension.includes(`Z${zone}`);
+      })
+      .map(async (item) => {
+        const fileNameWithoutExtension = item.name.split('.')[0];
+        const fileUrl = await getDownloadURL(item);
+
+        // Fetch JSON content if the JSON file exists
+        const jsonFileName = `${fileNameWithoutExtension}.json`;
+        const jsonItem = outputListResult.items.find((json) => json.name === jsonFileName);
+        const jsonContent = jsonItem ? await getJsonContent(jsonItem) : null;
+
+        return {
+          fileUrl,
+          jsonContent,
+          fileName: fileNameWithoutExtension,
+        };
+      })
+  );
+
+  // Organize the files into an array of objects with TIF, JPG, and JSON grouped together
+  const result = tifFiles.map((tifFile) => {
+    const matchingOutputFile = outputFiles.find(
+      (outputFile) => outputFile.fileName === tifFile.fileName
+    );
+    const tif2023 = tif2023Files.find(
+      (tif) => tif.fileName === tifFile.fileName
+    );
+
+    return {
+      tifUrl: tifFile.tifUrl,
+      tif2023Url: tif2023.tif2023Url,
+      fileUrl: matchingOutputFile?.fileUrl || null,
+      jsonContent: matchingOutputFile?.jsonContent || null,
+      fileName: tifFile.fileName,
+    };
+  });
+
+  console.log(result);
+  return result;
+
+  } catch (error) {
+    console.error('Error fetching files:', error);
+    throw error;
+  }
+};

@@ -1,14 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
+//infrastate final
 const firebaseConfig = {
-  apiKey: "AIzaSyCQU_pC4CncZVBVNTllbMt8tuMG35PLCZs",
-  authDomain: "infrastate-c9605.firebaseapp.com",
-  projectId: "infrastate-c9605",
-  storageBucket: "infrastate-c9605.appspot.com",
-  messagingSenderId: "214469370155",
-  appId: "1:214469370155:web:16d30e9b20d8ba29fc256e",
-  measurementId: "G-EFT80S4S9P"
+  apiKey: "AIzaSyDcXb1YwSR_EzHwr2Guc5MCYdF4Zi7FkzI",
+  authDomain: "infrastate-final.firebaseapp.com",
+  projectId: "infrastate-final",
+  storageBucket: "infrastate-final.appspot.com",
+  messagingSenderId: "1053005391686",
+  appId: "1:1053005391686:web:a45b7c95f1367a92bf2747"
 };
 
 // Initialize Firebase
