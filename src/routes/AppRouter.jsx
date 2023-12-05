@@ -27,7 +27,7 @@ const AppRouter = () => {
           <Route path="/rules" element={<RulesScreen/>}/>
           <Route path="/contact/*" element={<ContactPageRouter/>} />
           {/* temporary set to image list component */}
-          <Route path="/construction" element={<TiffDownloadComponent/>} />  
+          <Route path="/construction" element={<Construction/>} />  
           <Route path="/subscription" element={<SubscriptionPlanScreen/>}/>
           <Route path="/profile" element={<ProfileScreen/>}/>
         </Routes>
