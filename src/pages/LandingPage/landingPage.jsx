@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { getOutputFiles } from '../../Firebase/firebaseStorage';
 import { Typography, Card, Grid, Container } from '@mui/material';
 import landingPage_cover from '../../assets/landingPage_cover.jpg';
-import zone3_4 from '../../assets/zone3_4.jpg';
 import zone3_5 from '../../assets/zone3_5.jpg';
 import { PiBuildingsLight } from "react-icons/pi";
 import { MdOutlineLocationSearching, MdOutlineRule } from "react-icons/md";
@@ -392,6 +391,17 @@ const LandingPage = () => {
                       })
                       
                 )}
+                <Grid item md = {12}
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <TrackedResultCard 
+                    image={zone3_5}
+                    title={"Zone3_5"}
+                    data = {zone35OutputData}></TrackedResultCard>
+                    
+                </Grid>
                 
             </Grid>
         </Card>
