@@ -1,3 +1,6 @@
+import mahnoor from '../assets/mahnoor.jpeg';
+import hamza from '../assets/hamza.jpg';
+
 export const TrackingZonesData = [
     {
         key: 1,
@@ -391,4 +394,37 @@ export const constructionTypes = [
         value: 'Residential Detached',
         label: 'Residential Detached',
     },
+];
+
+
+export const teamMemberData = [
+    {
+        img: mahnoor,
+        name: 'Mahnoor Hashmi',
+        reg: 'CIIT/SP20-BCS-047/ISB',
+        tags: [
+            'Frontend',
+            'Design',
+            'Research',
+        ],
+        description: 'Major work in Designing, Research and UI Development Work',
+    },
+    {
+        img: hamza,
+        name: 'Hamza Shahid',
+        reg: 'CIIT/SP20-BCS-029/ISB',
+        tags: [
+            'Backend',
+            'ML',
+            'Research',
+        ],
+        description: 'Major work in Research, ML models and Backend Development',
+    },
+    {
+        img: mahnoor,
+        name: 'M. Rashid Mukhtar',
+        reg: 'Senior Faculty Member',
+        tags: ['Supervisor'],
+        description: 'Supervised the project',
+    }
 ];

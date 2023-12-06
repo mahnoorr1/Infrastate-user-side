@@ -2,9 +2,11 @@ import theme from '../../configs/theme';
 import meet from '../../assets/meet.jpg';
 import { PiBuildingsLight } from "react-icons/pi";
 import discussion from '../../assets/discussion.jpg';
+import { teamMemberData } from '../../configs/defaultData';
 import { Grid, Typography, Card, Container } from "@mui/material";
 import { MdOutlineLocationSearching, MdOutlineRule } from "react-icons/md";
 import constructor_illustrator from '../../assets/constructor_illustrator.png';
+import TeamMemberCard from './components/teamMemberCard';
 
 const About = () => {
     return (
@@ -197,7 +199,40 @@ const About = () => {
                     ></div>
                 </Grid>
             </Card>
-           
+            <Card sx={{
+                margin: '30px',
+                display: 'flex',
+                alignItems: 'center',
+                boxShadow: 'none',
+                flexDirection: 'column',
+                marginBottom: '20px',
+            }}>
+                <Typography variant='h3'
+                fontWeight={600} sx={{
+                    marginBottom: '20px',
+                }}>Our Team</Typography>
+                <Grid container sx={{
+                    paddingBottom: '20px',
+                }}>
+                    {
+                        teamMemberData.map((member, index) => {
+                            return (
+                                <Grid item md={4} sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                }}>
+                                    <TeamMemberCard 
+                                    imgUrl={member.img}
+                                    name={member.name}
+                                    tags={member.tags}
+                                    reg={member.reg}
+                                    description={member.description}/>
+                                </Grid>
+                            );
+                        })
+                    }
+                </Grid>
+            </Card>
             {/* <Grid container>
                 <Grid item md = {6} lg={6} p={4}>
                     <Typography 
