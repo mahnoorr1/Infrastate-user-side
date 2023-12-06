@@ -61,7 +61,7 @@ const TrackedResultCard = ({ image, title, data }) => {
             fontWeight={600}
             color={theme.palette.shades.greenMedium}
           >
-            Change Occurred: {data.change_results_ai}
+            Change Occurred: {data.change_results_ai.toFixed(2)} %
           </Typography>
         ) : (
           <Typography variant='subheading1' fontWeight={600} color={theme.palette.shades.greenMedium}>
