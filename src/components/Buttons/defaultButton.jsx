@@ -20,7 +20,6 @@ const AppButton = ({ text, variant, onClick, width }) => {
         fontWeight: '700',
         borderWidth: '2px',
         margin: '5px',
-        marginBottom: '15px',
         '&:hover': buttonStyleHovered, 
         transition: 'background-color 0.3s',
       }}

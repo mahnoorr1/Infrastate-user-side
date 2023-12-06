@@ -2,15 +2,30 @@ import React from "react";
 import theme from '../../../configs/theme';
 import { Card, Typography } from "@mui/material";
 import zone3_4 from '../../../assets/zone3_4.jpg';
+import { json, useNavigate } from "react-router-dom";
 
-const TrackedCard = ({ zone, fileName, jpgURL, tifURL, tif2023URL, jsonContent, handleClick }) => {
+const TrackedCard = ({ zone, fileName, jpgURL, tifURL, tif2023URL, jsonContent }) => {
+  const navigate = useNavigate();
+  
+  const handleCardClick = () => {
+    navigate('/construction/trackerDetails', {
+      state: {
+        zone: zone, 
+        fileName: fileName, 
+        jpgURL: jpgURL, 
+        tifURL:tifURL, 
+        tif2023URL: tif2023URL, 
+        jsonContent: jsonContent}
+        }
+      );
+  }
   return (
     <Card sx={{
       width: '300px',
       height: '300px',
       padding: '10px',
       cursor: 'pointer'
-    }} onClick = {handleClick}>
+    }} onClick = {handleCardClick}>
       <div style={{
         display: 'flex',
         alignSelf: 'center',
