@@ -15,7 +15,7 @@ const TrackedChangesDetailsScreen = () => {
   return (
     <div style={{ padding: '20px' }}>
       <Typography variant='h4' fontWeight={600}>
-        {trackerDetails.title} - Tracking Details
+        {trackerDetails.title} Tracker - Tracking Details
       </Typography>
       <hr />
       <div style={{

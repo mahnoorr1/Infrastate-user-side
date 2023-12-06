@@ -53,7 +53,7 @@ const TrackedResultCard = ({ image, title, data }) => {
             marginBottom: '5px',
           }}
         >
-          {title}
+          {title} Tracking Result
         </Typography>
         {data && data.change_results_ai !== undefined ? (
           <Typography

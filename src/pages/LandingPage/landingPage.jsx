@@ -379,7 +379,7 @@ const LandingPage = () => {
                             }}>
                                 <TrackedResultCard 
                                 image={file.image}
-                                title={file.fileName}
+                                title={file.fileName.replace('.jpg', '')}
                                 data = {filesData[index + 1].jsonContent && filesData[index + 1].jsonContent}></TrackedResultCard>
                                 
                             </Grid>
