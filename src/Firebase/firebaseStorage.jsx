@@ -1,7 +1,20 @@
 import { ref, getDownloadURL, listAll, list } from 'firebase/storage';
 import storage from './firebaseConfig';
 
+export const downloadJpgFile = async (fileName) => {
+  try {
+    const outputFolder = 'output/';
+    const jpgFilePath = `${outputFolder}${fileName}.jpg`;
 
+    const jpgFileRef = ref(storage, jpgFilePath);
+    const downloadUrl = await getDownloadURL(jpgFileRef);
+    return downloadUrl;
+
+  } catch (error) {
+    console.error(`Error downloading ${fileName}.jpg:`, error);
+    throw error;
+  }
+};
 
 // get single image
 export const getSingleImage = async (imagePath) => {
