@@ -24,7 +24,8 @@ const TrackedCard = ({ zone, fileName, jpgURL, tifURL, tif2023URL, jsonContent }
       width: '300px',
       height: '300px',
       padding: '10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      marginBottom: '20px',
     }} onClick = {handleCardClick}>
       <div style={{
         display: 'flex',

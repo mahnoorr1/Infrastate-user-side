@@ -24,7 +24,9 @@ const TrackerDetailsAndApply = () => {
 
     const handleYes = () => {
         console.log('User clicked Yes');
-        navigate("/construction/trackerDetails/addTracker", {state: {tifURL, tif2023URL, fileName}});
+        const parts = fileName.split('_');
+        const fileNum = parts.length > 1 ? parts[1] : '';
+        navigate("/construction/trackerDetails/addTracker", {state: {tifURL, tif2023URL, fileNum, fileName, zone}});
     };
 
     return(

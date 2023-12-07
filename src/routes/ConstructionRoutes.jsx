@@ -6,6 +6,7 @@ import TrackerDetailsAndApply from "../pages/Construction/detailsAndApply";
 import ChangePointOnMap from "../pages/Tracking/components/changePointOnMap";
 import { TrackerDetailProvider } from "../pages/Tracking/providers/trackerDetailProvider";
 import AddTrackerOnZoneSegment from "../pages/Construction/addTrackerOnZoneSegment";
+import ManualTracking from "../pages/Construction/manualTracking";
 
 const ConstructionPageRouter = () => {
   return (
@@ -13,6 +14,7 @@ const ConstructionPageRouter = () => {
     <TrackerDetailProvider>
       <Routes>
           <Route path="" element={<Construction />} />
+          <Route path="/manualTracking" element={<ManualTracking/>} />
           <Route path="/trackerDetails" element={<TrackerDetailsAndApply />} />
           <Route path="/trackerDetails/addTracker" element={<AddTrackerOnZoneSegment/>}/>
           <Route path="/trackerDetails/changePoint" element={<ChangePointOnMap/>}/>

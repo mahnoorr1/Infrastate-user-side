@@ -5,9 +5,11 @@ import TopNavBar from "../../components/Navbar/simpleNavBar";
 import { downloadTiffFile, fetchZoneFilesFromFolder, getSingleImage, getOutputFiles } from '../../Firebase/firebaseStorage';
 import AppButton from '../../components/Buttons/defaultButton';
 import TrackedCard from './components/trackerCard';
+import { useNavigate } from 'react-router-dom';
 
 const categories = ['Zone1', 'Zone2', 'Zone3', 'Zone4'];
 const Construction = () => {
+    const navigate = useNavigate();
     const [data, setData] = useState();
     const [filesData, setFilesData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -106,6 +108,10 @@ const Construction = () => {
             setLoading(true);
         }
     };
+
+    const handleManualTrackingButton = () => {
+        navigate('/construction/manualTracking');
+    }
     return(
         <div style={{
             paddingTop: '30px'
@@ -133,7 +139,7 @@ const Construction = () => {
                 <div>
                 <AppButton text={'Manual Tracking'}
                 variant={'outlined'}
-                onClick={()=>{}}/>
+                onClick={handleManualTrackingButton}/>
                 </div>
             </Card>
             {
