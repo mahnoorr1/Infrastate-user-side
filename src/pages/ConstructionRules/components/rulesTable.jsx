@@ -11,6 +11,7 @@ import {
   TableRow,
 } from '@mui/material';
 import theme from '../../../configs/theme';
+import { getAllRules } from '../../../api/Rules';
 
 const columns = [
   { id: 'Construction_Type', label: 'Construction Type', minWidth: 80 },
@@ -69,20 +70,20 @@ const RulesTable = () => {
   const [selectedZone, setSelectedZone] = useState('All');
   const [rules, setRules] = useState([]);
 
-//   useEffect(() => {
-//     async function fetchRules() {
-//       try {
-//         const data = await getAllRules();
-//         if (data) {
-//           setRules(data);
-//         }
-//       } catch (error) {
-//         console.error('Error fetching rules:', error);
-//       }
-//     }
+    useEffect(() => {
+      async function fetchRules() {
+        try {
+          const data = await getAllRules();
+          if (data) {
+            setRules(data);
+          }
+        } catch (error) {
+          console.error('Error fetching rules:', error);
+        }
+      }
 
-//     fetchRules();
-//   }, []);
+      fetchRules();
+    }, []);
 
   const initialRows = 
     rules.map((rule)=>({
@@ -119,7 +120,7 @@ const RulesTable = () => {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
-                    key={column.id}
+                    key={column._id}
                     align={column.align}
                     style={{
                       minWidth: column.minWidth,
@@ -140,7 +141,7 @@ const RulesTable = () => {
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
-                          <TableCell key={column.id} align={column.align}>
+                          <TableCell key={column._id} align={column.align}>
                             {
                                 <span>
                                   {value}
