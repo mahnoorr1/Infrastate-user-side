@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
-//infrastate final
 const firebaseConfig = {
   apiKey: "AIzaSyDcXb1YwSR_EzHwr2Guc5MCYdF4Zi7FkzI",
   authDomain: "infrastate-final.firebaseapp.com",

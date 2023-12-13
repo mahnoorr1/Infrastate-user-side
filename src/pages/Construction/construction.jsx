@@ -136,11 +136,11 @@ const Construction = () => {
                 <div>
                     <TopNavBar categories={categories} onCategoryChange={handleCategoryChange}></TopNavBar>
                 </div>
-                <div>
+                {/* <div>
                 <AppButton text={'Manual Tracking'}
                 variant={'outlined'}
                 onClick={handleManualTrackingButton}/>
-                </div>
+                </div> */}
             </Card>
             {
              loading ? 
@@ -164,7 +164,7 @@ const Construction = () => {
                             zone={zone}
                             tifURL={data.tifUrl}
                             tif2023URL={data.tif2023URL}
-                            jsonContent={data.jsonContent}/>
+                            jsonContent={data && data.jsonContent}/>
                         </Grid>
                     )
                 })

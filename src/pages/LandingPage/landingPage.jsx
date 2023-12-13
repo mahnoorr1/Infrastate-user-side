@@ -5,12 +5,14 @@ import { getOutputFiles } from '../../Firebase/firebaseStorage';
 import { Typography, Card, Grid, Container } from '@mui/material';
 import landingPage_cover from '../../assets/landingPage_cover.jpg';
 import zone3_5 from '../../assets/zone3_5.jpg';
+import zone3_4 from '../../assets/zone3_4.jpg';
 import { PiBuildingsLight } from "react-icons/pi";
 import { MdOutlineLocationSearching, MdOutlineRule } from "react-icons/md";
 import AppButton from '../../components/Buttons/defaultButton';
 import TrackedResultCard from '../Tracking/components/trackedResultsCard';
 import HoverZoom from '../../components/onhoverZoom';
 import zone35OutputData from '../../assets/zone3_5_output.json';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
     const [loadedData, setLoadedData] = useState(null);
@@ -40,6 +42,15 @@ const LandingPage = () => {
         };
         setLoadedData(newData);
     }, []);
+
+    const navigate = useNavigate();
+    const handleConstructionClick = () => {
+        navigate('/construction');
+    }
+    const handleRulesClick = () => {
+        navigate('/Rules');
+    }
+
     return(
         <div style={{
             height: '100%',
@@ -207,7 +218,7 @@ const LandingPage = () => {
             <div style={{ position: 'relative', width: '100%', height: '400px' }}>
             {/* Bottom Image */}
             <img
-                src={landingPage_cover}
+                src={zone3_5}
                 alt="Bottom Image"
                 style={{ 
                     width: '90%', 
@@ -230,9 +241,14 @@ const LandingPage = () => {
                 }}
             >
                 <img
-                    src={landingPage_cover}
-                    alt="Top Image"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                src={zone3_4}
+                alt="Top Image"
+                style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover',
+                    border: '5px solid',
+                    borderColor: theme.palette.shades.greenMedium }}
                 />
             </Card>
             </div>
@@ -260,7 +276,7 @@ const LandingPage = () => {
                 }}>
                     <HoverZoom>
                         <AppButton text={'View Details'}
-                        onClick={()=>{}}></AppButton>
+                        onClick={handleConstructionClick}></AppButton>
                     </HoverZoom>
                 </div>
             </Card>
@@ -300,7 +316,7 @@ const LandingPage = () => {
                 }}>
                     <HoverZoom>
                         <AppButton text={'View Details'}
-                        onClick={()=>{}}></AppButton>
+                        onClick={handleRulesClick}></AppButton>
                     </HoverZoom>
                 </div>
             </Card>

@@ -7,6 +7,7 @@ import no_content from '../../assets/no_content.jpg';
 import ImageGrid from "../../components/imageSegments";
 import AppButton from '../../components/Buttons/defaultButton';
 import DecisionModal from '../../components/decisionModal';
+import TrackedGeoDataTable from './dataTable';
 
 const TrackerDetailsAndApply = () => {
     const { state } = useLocation();
@@ -134,10 +135,14 @@ const TrackerDetailsAndApply = () => {
                         width: '100%',
                         height: '100%',
                         display: 'flex',
-                        justifyContent: 'center',
+                        alignItems: 'center',
                         padding: '10px',
+                        flexDirection: 'column',
                     }}>
                         <ImageGrid imagePath={jpgURL}></ImageGrid>
+
+
+                        <TrackedGeoDataTable geoData={jsonContent.geo_data}/>
                     </div>
                 ) : (
                     <div style={{

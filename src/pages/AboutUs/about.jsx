@@ -7,8 +7,24 @@ import { Grid, Typography, Card, Container } from "@mui/material";
 import { MdOutlineLocationSearching, MdOutlineRule } from "react-icons/md";
 import constructor_illustrator from '../../assets/constructor_illustrator.png';
 import TeamMemberCard from './components/teamMemberCard';
+import { getPrivacyPolicy } from '../../api/Policies';
+import { useState, useEffect } from 'react';
 
 const About = () => {
+    const [terms, setTerms] = useState({});
+    useEffect(() => {
+        async function fetchTerms() {
+          try {
+            const data = await getPrivacyPolicy();
+            if (data) {
+              setTerms(data);
+            }
+          } catch (error) {
+            console.error('Error fetching rules:', error);
+          }
+        }
+        fetchTerms();
+      }, []);
     return (
         <div style={{
             backgroundColor: '#FAFAF8',
@@ -195,8 +211,21 @@ const About = () => {
                         height: '100%',
                         background: '#FAFAF8',
                         border: `5px solid ${theme.palette.shades.greenMedium}`,
+                        padding: '30px'
                     }}
-                    ></div>
+                    >
+                        <Typography sx={{
+                            display:'flex',
+                            justifyContent: 'center',
+                        }} variant='h5' fontWeight={600}>Privacy Policy</Typography>
+                        <Typography marginBottom={'20px'}>{terms.Privacy_Policy}</Typography>
+
+                        <Typography sx={{
+                            display:'flex',
+                            justifyContent: 'center',
+                        }} variant='h5' fontWeight={600}>System Terms</Typography>
+                        <Typography>{terms.System_Term}</Typography>
+                    </div>
                 </Grid>
             </Card>
             <Card sx={{

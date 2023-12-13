@@ -3,10 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 import { MarkerProvider } from "../context/mapMarkerContext";
 import Construction from "../pages/Construction/construction";
 import TrackerDetailsAndApply from "../pages/Construction/detailsAndApply";
-import ChangePointOnMap from "../pages/Tracking/components/changePointOnMap";
 import { TrackerDetailProvider } from "../pages/Tracking/providers/trackerDetailProvider";
 import AddTrackerOnZoneSegment from "../pages/Construction/addTrackerOnZoneSegment";
 import ManualTracking from "../pages/Construction/manualTracking";
+import ChangePointOnMap from "../pages/Construction/components/changePointOnMap";
 
 const ConstructionPageRouter = () => {
   return (

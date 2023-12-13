@@ -31,6 +31,7 @@ export const getSingleImage = async (imagePath) => {
 
 
 export const downloadTiffFile = async (zone, fileName) => {
+  console.log('Entered Tif download method')
   const filePath = `Zone${zone}/Z${zone}_${fileName}.tif`;
 
   console.log(filePath)
