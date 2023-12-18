@@ -5,6 +5,7 @@ import signIn_image from '../../assets/signIn_image.jpg';
 import appLogo from '../../assets/appLogo.png';
 import HoverZoom from '../../components/onhoverZoom';
 // import { loginAdmin } from '../../api/Admin';
+import { loginUser } from '../../api/users';
 import { useNavigate } from 'react-router';
 
 const LoginScreen = () => {
@@ -65,15 +66,17 @@ const LoginScreen = () => {
       newErrors.password = 'Password must be at least 3 characters';
     }
 
-    // if (Object.keys(newErrors).length === 0) {
-    //   const res = await loginAdmin(formData.email,formData.password)
-    //   if(res){
-    //     navigate('/')
-    //   }
-    // } else {
-    //   setErrors(newErrors);
-    // }
-    navigate('/');
+    if (Object.keys(newErrors).length === 0) {
+      const res = await loginUser(formData.email,formData.password)
+      if(res){
+        navigate('/')
+      }
+      console.log(res)
+      console.log(res)
+    } else {
+      setErrors(newErrors);
+    }
+   // navigate('/');
   };
   return (
     <div
