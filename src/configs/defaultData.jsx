@@ -1,5 +1,6 @@
 import mahnoor from '../assets/mahnoor.jpeg';
 import hamza from '../assets/hamza.jpg';
+import rashid from '../assets/rashid.jpeg';
 
 export const TrackingZonesData = [
     {
@@ -421,7 +422,7 @@ export const teamMemberData = [
         description: 'Major work in Research, ML models and Backend Development',
     },
     {
-        img: mahnoor,
+        img: rashid,
         name: 'M. Rashid Mukhtar',
         reg: 'Senior Faculty Member',
         tags: ['Supervisor'],

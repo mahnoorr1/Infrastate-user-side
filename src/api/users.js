@@ -49,6 +49,7 @@ export const loginUser = async (email, password) => {
     try {
       const response = await Axios.post('/users/login', { email, password });
   
+      console.log(response.data)
       localStorage.setItem("LoggedIn" , true)
       localStorage.setItem("token", response.data.token);
       return true;
@@ -59,11 +60,9 @@ export const loginUser = async (email, password) => {
         if (error.response.data.message === 'Not Authorized No Token.') {
           const errorMessage = error.response.data.message + ' Please Login First';
           alert(errorMessage);
-          window.location.href = '/';
         } else if (error.response.data.message === 'UnAuthorized Token.') {
           const errorMessage = "You don't have access to this page.";
           alert(errorMessage);
-          window.location.href = '/Home';
         } else {
           alert(error.response.data.message);
         }

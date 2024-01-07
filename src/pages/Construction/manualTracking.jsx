@@ -3,7 +3,7 @@ import React, { useState , useEffect } from 'react';
 import { downloadTiffFile } from "../../Firebase/firebaseStorage";
 import { RingLoader } from 'react-spinners';
 import axios from 'axios';
-import FileUpload from "../../components/fileUpload";
+// import FileUpload from "../../components/fileUpload";
 const ManualTracking = () => {
     const [zone, setZone] = useState('');
     const [fileName, setFileName] = useState('');

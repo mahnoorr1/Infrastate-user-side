@@ -55,8 +55,11 @@ const Navbar = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = async () => {
     setAnchorEl(null);
+    await localStorage.removeItem('LoggedIn');
+    await localStorage.removeItem('token');
+    window.location.href = "/Auth/login";
   };
 
   const navigateToTop = () => {
